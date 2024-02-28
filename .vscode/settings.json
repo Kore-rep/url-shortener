@@ -1,0 +1,5 @@
+{
+    "rust-analyzer.linkedProjects": [
+        ".\\url-shortener-api\\Cargo.toml"
+    ]
+}
