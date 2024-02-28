@@ -1,12 +1,13 @@
 use mongodb::bson::oid::ObjectId;
-use serde::Serialize;
+use serde::{Deserialize, Serialize};
 
 use crate::constants::REDIRECT_SERVER_URL;
 use std::{
     collections::hash_map::DefaultHasher,
     hash::{Hash, Hasher},
 };
-#[derive(Serialize)]
+#[derive(Serialize, Deserialize)]
+
 pub struct ShortenedUrlData {
     #[serde(rename = "_id", skip_serializing_if = "Option::is_none")]
     pub id: Option<ObjectId>,
