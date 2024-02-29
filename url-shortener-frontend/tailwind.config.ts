@@ -1,9 +1,9 @@
 import type { Config } from "tailwindcss";
-import defaultTheme, { fontFamily } from "tailwindcss/defaultTheme";
-import colors from "tailwindcss/colors";
-import plugin from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
+// import { flattenColorPalette as default:flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
 const {
   default: flattenColorPalette,
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config: Config = {
@@ -12,9 +12,21 @@ const config: Config = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  darkMode: "class",
+  darkMode: "selector",
   theme: {
     extend: {
+      transitionTimingFunction: {
+        "invalid-timing": "cubic-bezier(.36,.07,.19,.97)",
+      },
+      keyframes: {
+        shake: {
+          "20%, 80%": { translate: "-4px" },
+          "50%": { translate: "4px" },
+        },
+      },
+      animation: {
+        shake: "shake 0.3s cubic-bezier(.36,.07,.19,.97) both",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -85,9 +97,10 @@ const config: Config = {
   plugins: [addVariablesForColors, require("tailwindcss-animate")],
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function addVariablesForColors({ addBase, theme }: any) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
+  const allColors = flattenColorPalette(theme("colors"));
+  const newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
 

@@ -1,6 +1,4 @@
-import Image from "next/image";
 import { BackgroundBeams } from "./components/ui/background-beams";
-import { Boxes } from "./components/ui/background-boxes";
 import { ShortenUrlCard } from "./components/ui/shorten-url-card";
 
 export default function Home() {
@@ -10,7 +8,6 @@ export default function Home() {
         <ShortenUrlCard /> 
       </div>
       <BackgroundBeams />
-      {/* <Boxes /> */}
       
     </main>
   );
