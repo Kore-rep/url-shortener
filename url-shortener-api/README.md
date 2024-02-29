@@ -15,4 +15,14 @@ The API exposes 2 endpoints.
 
 
 ## Technology
-The API is hosted on Oracle cloud and uses <insert persistent storage here>
+The API is hosted on Oracle cloud and uses MongoDB for persistence. 
+
+## TODO
+Add error codes for non-existing endpoints
+Add error codes for not-found URLs
+Improve URL trimming
+
+
+## Improvements
+Adding a local cache
+Add GitHub Actions CI/CD
