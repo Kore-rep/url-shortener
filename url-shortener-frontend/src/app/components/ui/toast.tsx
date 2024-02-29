@@ -4,6 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 
 import { cn } from "@/app/utils/cn"
 import { Cross2Icon } from "@radix-ui/react-icons"
+import { toast } from "./use-toast"
 
 const ToastProvider = ToastPrimitives.Provider
 
@@ -43,10 +44,12 @@ const Toast = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root> &
     VariantProps<typeof toastVariants>
 >(({ className, variant, ...props }, ref) => {
+  const style = cn(toastVariants({variant}), className);
+  console.log(style);
   return (
     <ToastPrimitives.Root
       ref={ref}
-      className={cn(toastVariants({ variant }), className)}
+      className={style}
       {...props}
     />
   )
